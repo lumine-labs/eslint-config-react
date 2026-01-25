@@ -1,4 +1,4 @@
-# @lumelabs/eslint-react
+# @lumelabs/eslint-config-react
 
 > ⚠️ **Experimental / Internal Use Only**
 >
@@ -31,4 +31,4 @@ or force unnatural code patterns.
 ## Installation
 
 ```bash
-npm install --save-dev @lumelabs/eslint-react
+npm install --save-dev @lumelabs/eslint-config-react
