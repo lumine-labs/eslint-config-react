@@ -8,6 +8,9 @@
         "type": "git",
         "url": "https://github.com/lumine-labs/eslint-react"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "keywords": [
         "eslint",
         "eslint-config",
