@@ -1,12 +1,12 @@
 {
-    "name": "@lumelabs/eslint-react",
+    "name": "@lumelabs/eslint-config-react",
     "version": "0.1.0",
     "description": "Opinionated ESLint configuration for TypeScript + React projects, based on ESLint 8.",
     "license": "MIT",
     "author": "Egor Arkhipov (Lumelabs)",
     "repository": {
         "type": "git",
-        "url": "https://github.com/lumine-labs/eslint-react"
+        "url": "https://github.com/lumine-labs/eslint-config-react"
     },
     "publishConfig": {
         "access": "public"
