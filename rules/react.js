@@ -3,6 +3,12 @@ module.exports = {
 
     extends: ["plugin:react/recommended"],
 
+    settings: {
+        react: {
+            version: "detect",
+        },
+    },
+
     // View link below for react rules documentation
     // https://github.com/jsx-eslint/eslint-plugin-react#list-of-supported-rules
     rules: {
@@ -311,7 +317,7 @@ module.exports = {
 
         // only .jsx files may have JSX
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
-        "react/jsx-filename-extension": ["error", { extensions: [".jsx"] }],
+        "react/jsx-filename-extension": ["error", { extensions: [".jsx", ".tsx"] }],
 
         // prevent accidental JS comments from being injected into JSX as text
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-comment-textnodes.md
@@ -595,22 +601,5 @@ module.exports = {
         // https://github.com/jsx-eslint/eslint-plugin-react/blob/9668ee0762acd5c23f53cd3a372e2d8d9563944d/docs/rules/jsx-props-no-spread-multi.md
         // TODO: semver-major, enable
         "react/jsx-props-no-spread-multi": "off",
-    },
-
-    settings: {
-        "import/resolver": {
-            node: {
-                extensions: [".js", ".jsx", ".json"],
-            },
-        },
-        react: {
-            pragma: "React",
-            version: "detect",
-        },
-        propWrapperFunctions: [
-            "forbidExtraProps", // https://www.npmjs.com/package/airbnb-prop-types
-            "exact", // https://www.npmjs.com/package/prop-types-exact
-            "Object.freeze", // https://tc39.github.io/ecma262/#sec-object.freeze
-        ],
     },
 }

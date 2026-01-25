@@ -41,11 +41,6 @@ module.exports = {
         ecmaVersion: "latest",
         sourceType: "module",
     },
-    settings: {
-        react: {
-            version: "detect",
-        },
-    },
     rules: {
         // Import
         // "import-helpers/order-imports": "off",
