@@ -1,6 +1,6 @@
 {
     "name": "@lumelabs/eslint-react",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "Opinionated ESLint configuration for TypeScript + React projects, based on ESLint 8.",
     "license": "MIT",
     "author": "Egor Arkhipov (Lumelabs)",

@@ -6,6 +6,8 @@
 > It may change, break, or be restructured at any time without notice.
 >
 > **Do not rely on this package for production or public projects unless you are prepared to maintain your own fork.**
+>
+> **Issues and feature requests may be closed without response.**
 
 Opinionated ESLint configuration for **TypeScript + React** projects.
 
