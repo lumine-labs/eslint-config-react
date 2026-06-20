@@ -8,6 +8,13 @@
         "type": "git",
         "url": "https://github.com/lumine-labs/eslint-config"
     },
+    "files": [
+        "index.cjs",
+        "override.js",
+        "rules",
+        "README.md",
+        "LICENSE.md"
+    ],
     "publishConfig": {
         "access": "public"
     },
