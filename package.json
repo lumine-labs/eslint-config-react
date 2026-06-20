@@ -1,7 +1,7 @@
 {
     "name": "@lumelabs/eslint-config",
-    "version": "0.1.0",
-    "description": "Opinionated ESLint configuration for TypeScript projects (both frontend and backend), based on ESLint 8.",
+    "version": "0.2.0",
+    "description": "Opinionated, batteries-included ESLint 9 (flat config) for TypeScript projects — frontend and backend.",
     "license": "MIT",
     "author": "Egor Arkhipov (Lumelabs)",
     "repository": {
@@ -10,7 +10,6 @@
     },
     "files": [
         "index.cjs",
-        "override.js",
         "rules",
         "README.md",
         "LICENSE.md"
@@ -21,8 +20,11 @@
     "keywords": [
         "eslint",
         "eslint-config",
+        "eslintconfig",
+        "flat-config",
+        "eslint9",
         "typescript",
-        "eslint8",
+        "react",
         "lint",
         "code-style"
     ],
@@ -31,16 +33,25 @@
         ".": "./index.cjs"
     },
     "dependencies": {
-        "@typescript-eslint/eslint-plugin": "^8.53.1",
-        "@typescript-eslint/parser": "^8.53.1",
+        "@eslint/js": "^9.39.0",
         "confusing-browser-globals": "^1.0.11",
-        "eslint": "^8.57.1",
+        "eslint": "^9.39.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react": "^7.37.5",
-        "eslint-plugin-react-hooks": "^7.0.1"
+        "eslint-plugin-react-hooks": "^7.1.0",
+        "globals": "^17.0.0",
+        "typescript-eslint": "^8.61.0"
+    },
+    "peerDependencies": {
+        "typescript": ">=5.0.0"
+    },
+    "peerDependenciesMeta": {
+        "typescript": {
+            "optional": true
+        }
     },
     "devDependencies": {
         "prettier": "^3.8.1"

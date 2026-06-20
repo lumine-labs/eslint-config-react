@@ -22,11 +22,14 @@ module.exports = {
 
         // ensure imports point to files/modules that can be resolved
         // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-        "import/no-unresolved": ["error", { commonjs: true, caseSensitive: true }],
+        // Off: TypeScript already resolves and type-checks every import path, so this is
+        // redundant here and notably slow on TS projects.
+        "import/no-unresolved": "off",
 
         // ensure named imports coupled with named exports
         // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/named.md#when-not-to-use-it
-        "import/named": "error",
+        // Off: TypeScript already verifies named imports against their exports.
+        "import/named": "off",
 
         // ensure default import coupled with default export
         // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/default.md#when-not-to-use-it
@@ -225,11 +228,11 @@ module.exports = {
         // https://github.com/import-js/eslint-plugin-import/blob/44a038c06487964394b1e15b64f3bd34e5d40cde/docs/rules/group-exports.md
         "import/group-exports": "off",
 
-        // forbid default exports. this is a terrible rule, do not use it.
+        // Forbid default exports.
         // https://github.com/import-js/eslint-plugin-import/blob/44a038c06487964394b1e15b64f3bd34e5d40cde/docs/rules/no-default-export.md
         "import/no-default-export": "error",
 
-        // Prohibit named exports. this is a terrible rule, do not use it.
+        // Allows named exports.
         // https://github.com/import-js/eslint-plugin-import/blob/1ec80fa35fa1819e2d35a70e68fb6a149fb57c5e/docs/rules/no-named-export.md
         "import/no-named-export": "off",
 
@@ -239,7 +242,9 @@ module.exports = {
 
         // Forbid cyclical dependencies between modules
         // https://github.com/import-js/eslint-plugin-import/blob/d81f48a2506182738409805f5272eff4d77c9348/docs/rules/no-cycle.md
-        "import/no-cycle": ["error", { maxDepth: "∞" }],
+        // Warn (not error): cyclic imports are common and often unavoidable in TypeScript
+        // and backend code (e.g. type-only cycles), so flag rather than block.
+        "import/no-cycle": ["warn", { maxDepth: "∞" }],
 
         // Ensures that there are no useless path segments
         // https://github.com/import-js/eslint-plugin-import/blob/ebafcbf59ec9f653b2ac2a0156ca3bcba0a7cf57/docs/rules/no-useless-path-segments.md

@@ -14,7 +14,7 @@ module.exports = {
 
         // Disallow await inside of loops
         // https://eslint.org/docs/rules/no-await-in-loop
-        "no-await-in-loop": "error",
+        "no-await-in-loop": "warn",
 
         // Disallow comparisons to negative zero
         // https://eslint.org/docs/rules/no-compare-neg-zero
@@ -184,10 +184,6 @@ module.exports = {
 
         // disallow comparisons with the value NaN
         "use-isnan": "error",
-
-        // ensure JSDoc comments are valid
-        // https://eslint.org/docs/rules/valid-jsdoc
-        "valid-jsdoc": "off",
 
         // ensure that the results of typeof are compared against a valid string
         // https://eslint.org/docs/rules/valid-typeof
