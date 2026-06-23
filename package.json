@@ -1,6 +1,6 @@
 {
     "name": "@lumelabs/eslint-config",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Opinionated, batteries-included ESLint 9 (flat config) for TypeScript projects — frontend and backend.",
     "license": "MIT",
     "author": "Egor Arkhipov (Lumelabs)",
@@ -10,6 +10,7 @@
     },
     "files": [
         "index.cjs",
+        "type-checked.cjs",
         "rules",
         "README.md",
         "LICENSE.md"
@@ -30,15 +31,17 @@
     ],
     "main": "index.cjs",
     "exports": {
-        ".": "./index.cjs"
+        ".": "./index.cjs",
+        "./type-checked": "./type-checked.cjs"
     },
     "dependencies": {
         "@eslint/js": "^9.39.0",
         "confusing-browser-globals": "^1.0.11",
         "eslint": "^9.39.0",
         "eslint-config-prettier": "^10.1.8",
-        "eslint-import-resolver-typescript": "^4.4.4",
-        "eslint-plugin-import": "^2.32.0",
+        "eslint-import-resolver-node": "^0.3.9",
+        "eslint-import-resolver-typescript": "^4.4.5",
+        "eslint-plugin-import-x": "^4.16.0",
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^7.1.0",

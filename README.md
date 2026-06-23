@@ -20,7 +20,8 @@ avoids rules that create noise or force unnatural code.
   Install one package; you don't add `eslint` or any plugin yourself.
 - **TypeScript-first** (`typescript-eslint`), works for frontend and backend
 - React + React Hooks (incl. the React Compiler rules, tuned to warn) + JSX a11y
-- `eslint-plugin-import` rules (named-exports enforced; default exports disallowed)
+- `eslint-plugin-import-x` rules (named-exports enforced; default exports disallowed)
+- **Optional type-aware linting** via a separate `/type-checked` entry (`no-floating-promises`, `no-misused-promises`, …)
 - **Prettier-compatible** — all formatting rules are turned off; Prettier owns formatting
 - Jest globals auto-enabled for test files only
 
@@ -62,6 +63,21 @@ const lumelabs = require("@lumelabs/eslint-config")
 module.exports = lumelabs
 ```
 
+### Type-aware linting (opt-in)
+
+The default export is **syntactic-only**, so it works with zero `tsconfig` setup. For the
+high-value **type-aware** rules (`no-floating-promises`, `no-misused-promises`,
+`switch-exhaustiveness-check`, `await-thenable`, …), use the `/type-checked` entry — it
+requires your project to have a real `tsconfig.json` (auto-discovered via `projectService`):
+
+```js
+import lumelabs from "@lumelabs/eslint-config/type-checked"
+
+export default lumelabs
+```
+
+Plain JS/config files automatically have type-checking turned back off, so they never error.
+
 ### Overriding rules per project
 
 The export is a flat-config array — spread it and append your own config objects:
@@ -74,7 +90,7 @@ export default [
     {
         rules: {
             // e.g. relax the named-exports rule for a framework that needs default exports
-            "import/no-default-export": "off",
+            "import-x/no-default-export": "off",
         },
     },
 ]
@@ -84,7 +100,7 @@ export default [
 
 ## Notes
 
-- **Named exports are enforced** (`import/no-default-export`). `*.cjs` files are ignored, so
+- **Named exports are enforced** (`import-x/no-default-export`). `*.cjs` files are ignored, so
   CommonJS config files are unaffected. For frameworks that require default exports
   (e.g. Next.js pages), override the rule for the relevant paths as shown above.
 - **`*.stories.*` and `*.cjs` are not linted** by default.

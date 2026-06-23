@@ -1,11 +1,8 @@
 module.exports = {
-    plugins: ["react-hooks"],
-
-    // NOTE: We intentionally do NOT extend "plugin:react-hooks/recommended".
-    // As of eslint-plugin-react-hooks v7 that preset enables the entire React
-    // Compiler ruleset at "error". We enumerate every rule explicitly so that a
-    // future plugin upgrade can never silently turn new rules on again.
-    // Full list: https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks
+    // Plugin wiring lives in index.cjs. We intentionally do NOT extend
+    // "plugin:react-hooks/recommended": as of eslint-plugin-react-hooks v7 that preset
+    // enables the entire React Compiler ruleset at "error". We enumerate every rule
+    // explicitly so a plugin upgrade can never silently turn new ones on.
     rules: {
         // --- Core Hooks rules ---
 

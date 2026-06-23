@@ -20,9 +20,6 @@ module.exports = {
         // disallow use of the Array constructor
         "no-array-constructor": "error",
 
-        // disallow use of the Object constructor
-        "no-new-object": "error",
-
         // disallow certain syntax forms
         // https://eslint.org/docs/rules/no-restricted-syntax
         "no-restricted-syntax": [

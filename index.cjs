@@ -8,6 +8,11 @@
 //   import lumelabs from "@lumelabs/eslint-config"
 //   export default lumelabs
 //
+// This entry is SYNTACTIC only (no type-aware rules) so it works in any project
+// without a configured tsconfig/projectService. For the type-aware superset:
+//
+//   import lumelabs from "@lumelabs/eslint-config/type-checked"
+//
 // Authored as CommonJS so it can be require()'d or import()'ed from either a
 // CJS or ESM eslint.config file.
 
@@ -16,7 +21,8 @@ const tseslint = require("typescript-eslint")
 const react = require("eslint-plugin-react")
 const reactHooks = require("eslint-plugin-react-hooks")
 const jsxA11y = require("eslint-plugin-jsx-a11y")
-const importPlugin = require("eslint-plugin-import")
+const importX = require("eslint-plugin-import-x")
+const { createTypeScriptImportResolver } = require("eslint-import-resolver-typescript")
 const prettier = require("eslint-config-prettier")
 const globals = require("globals")
 
@@ -58,13 +64,14 @@ module.exports = [
     js.configs.recommended,
     ...tseslint.configs.recommended,
     react.configs.flat.recommended,
+    react.configs.flat["jsx-runtime"], // automatic JSX runtime — disables react-in-jsx-scope + jsx-uses-react
     jsxA11y.flatConfigs.recommended,
-    importPlugin.flatConfigs.recommended,
 
-    // Language setup, react-hooks plugin, shared settings and all our overrides
+    // Language setup, plugins, shared settings and all our overrides
     {
         plugins: {
             "react-hooks": reactHooks,
+            "import-x": importX,
         },
         languageOptions: {
             ecmaVersion: "latest",
@@ -78,7 +85,11 @@ module.exports = [
             },
         },
         settings: {
-            ...imports.settings,
+            // TypeScript resolves first (with type defs), then Node — import-x's modern resolver API
+            "import-x/resolver-next": [
+                createTypeScriptImportResolver({ alwaysTryTypes: true }),
+                importX.createNodeResolver(),
+            ],
             ...reactRules.settings,
         },
         rules: customRules,
@@ -91,7 +102,7 @@ module.exports = [
             globals: { ...globals.jest },
         },
         rules: {
-            "import/no-extraneous-dependencies": "off",
+            "import-x/no-extraneous-dependencies": "off",
             "@typescript-eslint/no-explicit-any": "off",
         },
     },

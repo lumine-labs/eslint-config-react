@@ -5,9 +5,6 @@ module.exports = {
         // enforce or disallow variable initializations at definition
         "init-declarations": "off",
 
-        // disallow the catch clause parameter name being the same as a variable in the outer scope
-        "no-catch-shadow": "off",
-
         // disallow deletion of variables
         "no-delete-var": "error",
 
@@ -45,9 +42,7 @@ module.exports = {
         // disallow use of undefined when initializing variables
         "no-undef-init": "error",
 
-        // disallow use of undefined variable
-        // https://eslint.org/docs/rules/no-undefined
-        // TODO: enable?
+        // allow `undefined` (safe in modern strict-mode/ESM; TS guards against shadowing)
         "no-undefined": "off",
 
         // disallow declaration of variables that are not used in the code

@@ -1,14 +1,6 @@
 module.exports = {
-    plugins: ["jsx-a11y"],
-
-    extends: ["plugin:jsx-a11y/recommended"],
-
+    // Plugin + preset wiring lives in index.cjs (jsxA11y.flatConfigs.recommended).
     rules: {
-        // ensure emoji are accessible
-        // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/accessible-emoji.md
-        // disabled; rule is deprecated
-        "jsx-a11y/accessible-emoji": "off",
-
         // Enforce that all elements that require alternative text have meaningful information
         // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/alt-text.md
         "jsx-a11y/alt-text": [
@@ -248,37 +240,13 @@ module.exports = {
         // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/tabindex-no-positive.md
         "jsx-a11y/tabindex-no-positive": "error",
 
-        // ----------------------------------------------------
-        // Rules that no longer exist in eslint-plugin-jsx-a11y
-        // ----------------------------------------------------
+        // Ensure anchor text is not ambiguous ("click here", "read more")
+        "jsx-a11y/anchor-ambiguous-text": "warn",
 
-        // require that JSX labels use "htmlFor"
-        // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md
-        // deprecated: replaced by `label-has-associated-control` rule
-        "jsx-a11y/label-has-for": [
-            "off",
-            {
-                components: [],
-                required: {
-                    every: ["nesting", "id"],
-                },
-                allowChildren: false,
-            },
-        ],
+        // Disallow aria-hidden="true" on focusable elements (traps screen-reader users)
+        "jsx-a11y/no-aria-hidden-on-focusable": "error",
 
-        // Ensures anchor text is not ambiguous
-        // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/93f78856655696a55309440593e0948c6fb96134/docs/rules/anchor-ambiguous-text.md
-        // TODO: semver-major, enable
-        "jsx-a11y/anchor-ambiguous-text": "off",
-
-        // Enforce that aria-hidden="true" is not set on focusable elements.
-        // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/93f78856655696a55309440593e0948c6fb96134/docs/rules/no-aria-hidden-on-focusable.md
-        // TODO: semver-major, enable
-        "jsx-a11y/no-aria-hidden-on-focusable": "off",
-
-        // Enforces using semantic DOM elements over the ARIA role property.
-        // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/93f78856655696a55309440593e0948c6fb96134/docs/rules/prefer-tag-over-role.md
-        // TODO: semver-major, enable
-        "jsx-a11y/prefer-tag-over-role": "off",
+        // Prefer semantic elements (<button>) over the ARIA role prop (div role="button")
+        "jsx-a11y/prefer-tag-over-role": "warn",
     },
 }
