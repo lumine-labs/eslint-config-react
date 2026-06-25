@@ -14,6 +14,7 @@
 const tseslint = require("typescript-eslint")
 const prettier = require("eslint-config-prettier")
 const base = require("./index.cjs")
+const { typeAwareRules } = require("./rules/typescript-eslint")
 
 module.exports = [
     ...base,
@@ -22,7 +23,8 @@ module.exports = [
     ...tseslint.configs.recommendedTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
 
-    // Turn on type information + tune the noisier type-aware rules
+    // Turn on type information; our tuned type-aware overrides live in
+    // rules/typescript-eslint.js (the `typeAwareRules` export)
     {
         languageOptions: {
             parserOptions: {
@@ -30,20 +32,7 @@ module.exports = [
                 tsconfigRootDir: process.cwd(),
             },
         },
-        rules: {
-            // async handlers passed to JSX props (onClick={async () => …}) are fine
-            "@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: { attributes: false } }],
-            // logging / string-building with numbers & booleans is normal
-            "@typescript-eslint/restrict-template-expressions": ["error", { allowNumber: true, allowBoolean: true }],
-            // exhaustiveness for discriminated unions (reducers, message handlers)
-            "@typescript-eslint/switch-exhaustiveness-check": "error",
-            // pairs with consistent-type-imports from the base config
-            "@typescript-eslint/consistent-type-exports": ["error", { fixMixedExportsWithInlineTypeSpecifier: true }],
-            // better stack traces; replaces the deprecated core no-return-await
-            "@typescript-eslint/return-await": ["error", "in-try-catch"],
-            // too noisy unless the consumer enables `noUncheckedIndexedAccess` in tsconfig
-            "@typescript-eslint/no-unnecessary-condition": "off",
-        },
+        rules: typeAwareRules,
     },
 
     // Plain JS / config files can't be type-checked — disable type-aware rules there
