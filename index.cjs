@@ -8,16 +8,15 @@
 //   import lumelabs from "@lumelabs/eslint-config"
 //   export default lumelabs
 //
-// This entry is SYNTACTIC only (no type-aware rules) so it works in any project
-// without a configured tsconfig/projectService. For the type-aware superset:
+// This entry is plain JavaScript only — no TypeScript parser/plugin at all — so it
+// works in any project with zero setup. For TypeScript projects, use:
 //
-//   import lumelabs from "@lumelabs/eslint-config/type-checked"
+//   import lumelabs from "@lumelabs/eslint-config/typescript"
 //
 // Authored as CommonJS so it can be require()'d or import()'ed from either a
 // CJS or ESM eslint.config file.
 
 const js = require("@eslint/js")
-const tseslint = require("typescript-eslint")
 const react = require("eslint-plugin-react")
 const reactHooks = require("eslint-plugin-react-hooks")
 const jsxA11y = require("eslint-plugin-jsx-a11y")
@@ -34,7 +33,6 @@ const es6 = require("./rules/es6")
 const variables = require("./rules/variables")
 const style = require("./rules/style")
 const strict = require("./rules/strict")
-const typescriptRules = require("./rules/typescript-eslint")
 const imports = require("./rules/imports")
 const reactRules = require("./rules/react")
 const reactHooksRules = require("./rules/react-hooks")
@@ -47,7 +45,6 @@ const customRules = {
     ...variables.rules,
     ...style.rules,
     ...strict.rules,
-    ...typescriptRules.rules,
     ...imports.rules,
     ...reactRules.rules,
     ...reactHooksRules.rules,
@@ -62,7 +59,6 @@ module.exports = [
 
     // Base presets
     js.configs.recommended,
-    ...tseslint.configs.recommended,
     react.configs.flat.recommended,
     react.configs.flat["jsx-runtime"], // automatic JSX runtime — disables react-in-jsx-scope + jsx-uses-react
     jsxA11y.flatConfigs.recommended,
@@ -103,7 +99,6 @@ module.exports = [
         },
         rules: {
             "import-x/no-extraneous-dependencies": "off",
-            "@typescript-eslint/no-explicit-any": "off",
         },
     },
 

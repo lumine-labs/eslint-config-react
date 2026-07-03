@@ -54,11 +54,11 @@ module.exports = {
 
         // disallow Math.pow in favor of the ** operator
         // https://eslint.org/docs/rules/prefer-exponentiation-operator
-        "prefer-exponentiation-operator": "error",
+        "prefer-exponentiation-operator": "warn",
 
         // prefer object spread over Object.assign
         // https://eslint.org/docs/rules/prefer-object-spread
-        "prefer-object-spread": "error",
+        "prefer-object-spread": "warn",
 
         // require function expressions to have a name
         // https://eslint.org/docs/rules/func-names

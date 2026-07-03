@@ -35,7 +35,7 @@ module.exports = {
 
         // disallow returning a value from a Promise executor
         // https://eslint.org/docs/rules/no-promise-executor-return
-        "no-promise-executor-return": "error",
+        "no-promise-executor-return": "warn",
 
         // catch `${x}` written inside a normal (non-template) string
         // https://eslint.org/docs/rules/no-template-curly-in-string

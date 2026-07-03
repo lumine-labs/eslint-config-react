@@ -70,8 +70,8 @@ module.exports = {
         // (e.g. Next.js pages) can override this for the relevant paths.
         "import-x/no-default-export": "error",
 
-        // Prefer inline type specifiers — pairs with @typescript-eslint/consistent-type-imports
-        "import-x/consistent-type-specifier-style": ["error", "prefer-inline"],
+        // Prefer inline type specifiers — replaced with @typescript-eslint/consistent-type-imports
+        "import-x/consistent-type-specifier-style": "off",
 
         // Disallow empty named import blocks: `import {} from "x"`
         "import-x/no-empty-named-blocks": "error",
