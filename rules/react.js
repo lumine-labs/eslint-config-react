@@ -127,7 +127,7 @@ module.exports = {
         "react/self-closing-comp": "error",
 
         // Enforce destructuring-symmetric useState naming ([x, setX])
-        "react/hook-use-state": "warn",
+        "react/hook-use-state": "off",
 
         // Disallow duplicate prop spreads ({...a} {...b} silently clobbers)
         "react/jsx-props-no-spread-multi": "error",

@@ -17,7 +17,7 @@ module.exports = {
 
         // encourages use of dot notation whenever possible
         // https://eslint.org/docs/rules/dot-notation
-        "dot-notation": ["error", { allowKeywords: true }],
+        "dot-notation": "off",
 
         // require the use of === and !==
         // https://eslint.org/docs/rules/eqeqeq

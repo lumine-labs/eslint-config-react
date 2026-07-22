@@ -98,5 +98,17 @@ module.exports = {
 
         // https://typescript-eslint.io/rules/no-unsafe-assignment/
         "@typescript-eslint/no-unsafe-assignment": "off",
+
+        // https://typescript-eslint.io/rules/no-empty-function/
+        "@typescript-eslint/no-empty-function": "warn",
+
+        // https://typescript-eslint.io/rules/no-unsafe-return/
+        "@typescript-eslint/no-unsafe-return": "warn",
+
+        // https://typescript-eslint.io/rules/array-type/
+        "@typescript-eslint/array-type": "off",
+
+        // https://typescript-eslint.io/rules/dot-notation/
+        "@typescript-eslint/dot-notation": "warn",
     },
 }
